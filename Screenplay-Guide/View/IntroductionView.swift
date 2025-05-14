@@ -17,7 +17,11 @@ struct IntroductionView: View {
                 
                 //What is a Screenplay Section
                 Text("What is a Screenplay?")
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                    .padding(.top, 10)
             }
         }
     }
 }
+

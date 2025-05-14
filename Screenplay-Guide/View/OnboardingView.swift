@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct OnboardingView: View {
     
     @Environment(\.presentationMode) var presentationMode
@@ -33,7 +34,7 @@ struct OnboardingView: View {
                 presentationMode: presentationMode,
                 firstLaunch: $firstLaunch
             ).tag(1)
-                        
+            
             OnboardingPage(
                 icon: "eye.fill",
                 title: "Live Preview",
@@ -42,7 +43,7 @@ struct OnboardingView: View {
                 presentationMode: presentationMode,
                 firstLaunch: $firstLaunch
             ).tag(2)
-                        
+            
             OnboardingPage(
                 icon: "paintbrush.pointed.fill",
                 title: "Free Playground",
@@ -51,13 +52,13 @@ struct OnboardingView: View {
                 presentationMode: presentationMode,
                 firstLaunch: $firstLaunch
             ).tag(3)
+            
         }
         .tabViewStyle(.page)
         .indexViewStyle(.page(backgroundDisplayMode: .always))
         .interactiveDismissDisabled()
     }
 }
-
 
 struct OnboardingPage: View {
     
@@ -82,29 +83,36 @@ struct OnboardingPage: View {
                     .symbolEffect(.bounce, options: .speed(3).repeat(3), value: true)
                     .font(.system(size: 80))
                     .foregroundStyle(.tint)
-                
-                Text(title).font(.title).fontWeight(.bold).padding()
-                
-                Text(description).multilineTextAlignment(.center)
-                
+
+                Text(title)
+                    .font(.title)
+                    .fontWeight(.bold)
+
+                    .padding()
+
+                Text(description)
+                    .multilineTextAlignment(.center)
+
+
                 if isLastPage {
                     Button(action: {
                         firstLaunch = false
                         presentationMode.dismiss()
                     }, label: {
-                        Text("Get Started").fontWeight(.medium)
+                        Text("Get Started")
+                            .fontWeight(.medium)
                     })
                     .buttonStyle(.borderedProminent)
                     .controlSize(.large)
                     .buttonBorderShape(.capsule)
                     .padding(.top, 20)
                 }
-            }.padding(30)
-                        
+
+            }
+            .padding(20)
         }
     }
 }
-
 
 #Preview {
     ContentView()
